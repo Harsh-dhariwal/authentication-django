@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import json
 import urllib.request
+from service.models import Service
   
 
 def aboutus(request):
@@ -9,6 +10,10 @@ def aboutus(request):
 
 
 def homepage(request):
+    servicesData=Service.objects.all()
+    for a in servicesData:
+        print("here is our data");
+        print(servicesData);
     
     if request.method == 'GET':
          source = urllib.request.urlopen(
